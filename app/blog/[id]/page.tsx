@@ -15,5 +15,5 @@ export async function generateMetadata({
 }
 
 export default function Post({ params: { id } }: Props) {
-  return <h1>Post Page with id: {id}</h1>;
+  return <h1 className="title">Post Page with id: {id}</h1>;
 }

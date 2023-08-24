@@ -7,13 +7,23 @@ export default function AboutLayout({
 }) {
   return (
     <div>
-      <h1>About page</h1>
-      <ul>
-        <li>
-          <Link href="/about/team">Team</Link>
+      <h1 className="title">About page</h1>
+      <ul className="list-disc">
+        <li className="mb-[5px]">
+          <Link
+            href="/about/team"
+            className="underline text-xl hover:text-blue-400 focus:text-blue-400"
+          >
+            Team
+          </Link>
         </li>
-        <li>
-          <Link href="/about/contacts">Contacts</Link>
+        <li className="mb-[5px]">
+          <Link
+            href="/about/contacts"
+            className="underline text-xl hover:text-blue-400 focus:text-blue-400"
+          >
+            Contacts
+          </Link>
         </li>
       </ul>
       {children}

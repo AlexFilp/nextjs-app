@@ -5,5 +5,5 @@ export const metadata: Metadata = {
 };
 
 export default function About() {
-  return <p>select please</p>;
+  return <p className="text-lg">select please</p>;
 }

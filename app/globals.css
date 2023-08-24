@@ -3,7 +3,13 @@
 @tailwind utilities;
 
 @layer components {
+  .container {
+    @apply max-w-[900px] px-[2rem];
+  }
   .title {
     @apply text-4xl font-bold;
+  }
+  .link {
+    @apply text-[20px] text-white font-semibold no-underline transition-all duration-200 ease-linear hover:text-red-600 focus:text-red-600 hover:scale-110 focus:scale-110;
   }
 }

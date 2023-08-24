@@ -21,10 +21,13 @@ export default async function Blog() {
 
   return (
     <>
-      <h1>Blog Page</h1>
-      <ul>
+      <h1 className="title">Blog Page</h1>
+      <ul className="flex flex-col gap-[5px] list-decimal mt-[20px]">
         {posts.map((post: any) => (
-          <li key={post.id}>
+          <li
+            key={post.id}
+            className="border-2 border-black rounded-md py-1 px-2 mb-[6px] last:mb-0 hover:border-red-600"
+          >
             <Link href={`/blog/${post.id}`}>{post.title}</Link>
           </li>
         ))}
