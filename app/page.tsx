@@ -1,3 +1,3 @@
 export default function HomePage() {
-  <h1>Home page</h1>;
+  return <h1 className="text-[50px]">Home page</h1>;
 }
