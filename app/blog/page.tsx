@@ -22,11 +22,11 @@ export default async function Blog() {
   return (
     <>
       <h1 className="title">Blog Page</h1>
-      <ul className="flex flex-col gap-[5px] list-decimal mt-[20px]">
+      <ul className="flex flex-col gap-[12px] mt-[20px] pt-[10px]  pb-[30px]">
         {posts.map((post: any) => (
           <li
             key={post.id}
-            className="border-2 border-black rounded-md py-1 px-2 mb-[6px] last:mb-0 hover:border-red-600"
+            className="border-2 border-black rounded-md py-1 px-2 hover:border-red-600 dark:border-white dark:text-white dark:hover:border-red-600 transitionAll"
           >
             <Link href={`/blog/${post.id}`}>{post.title}</Link>
           </li>

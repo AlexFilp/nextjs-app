@@ -8,20 +8,14 @@ export default function AboutLayout({
   return (
     <div>
       <h1 className="title">About page</h1>
-      <ul className="list-disc">
+      <ul>
         <li className="mb-[5px]">
-          <Link
-            href="/about/team"
-            className="underline text-xl hover:text-blue-400 focus:text-blue-400"
-          >
+          <Link href="/about/team" className="aboutLink">
             Team
           </Link>
         </li>
         <li className="mb-[5px]">
-          <Link
-            href="/about/contacts"
-            className="underline text-xl hover:text-blue-400 focus:text-blue-400"
-          >
+          <Link href="/about/contacts" className="aboutLink">
             Contacts
           </Link>
         </li>
