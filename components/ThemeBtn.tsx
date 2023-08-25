@@ -1,7 +1,7 @@
 "use client";
 import { useLayoutEffect, useState } from "react";
 export const ThemeBtn = () => {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") ?? "light");
 
   useLayoutEffect(() => {
     if (theme !== "light") {
