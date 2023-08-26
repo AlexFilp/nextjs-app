@@ -16,8 +16,6 @@ export const ThemeBtn = () => {
   }, [darkMode]);
 
   const handleDarkMode = () => {
-    console.log(window.localStorage.darkMode);
-    console.log(darkMode);
     if (darkMode === "false") {
       setDarkMode("true");
     } else {
