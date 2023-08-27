@@ -1,14 +1,14 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Metadata } from "next";
+// import { Metadata } from "next";
 import { ThreeDots } from "react-loader-spinner";
 import { getPosts } from "@/services/getPosts";
 import { PostsList } from "@/components/PostsList";
 import { SearchPosts } from "@/components/SearchPosts";
 
-export const metadata: Metadata = {
-  title: "Blog page",
-};
+// export const metadata: Metadata = {
+//   title: "Blog Page",
+// };
 
 export default function Blog() {
   const [posts, setPosts] = useState<any[]>([]);
