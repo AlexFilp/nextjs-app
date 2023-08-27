@@ -1,31 +1,30 @@
 "use client";
 import { useState, useEffect } from "react";
+import { useTheme } from "next-themes";
 
 export const ThemeBtn = () => {
-  const [darkMode, setDarkMode] = useState(
-    window.localStorage.getItem("darkMode") ?? "false"
-  );
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    if (darkMode === "false") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-    window.localStorage.setItem("darkMode", darkMode);
-  }, [darkMode]);
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   const handleDarkMode = () => {
-    if (darkMode === "false") {
-      setDarkMode("true");
-    } else {
-      setDarkMode("false");
-    }
+    setTheme("dark");
+  };
+
+  const handleLightMode = () => {
+    setTheme("light");
   };
 
   return (
     <button
-      onClick={handleDarkMode}
+      onClick={theme === "light" ? handleDarkMode : handleLightMode}
       type="button"
       className="text-white border border-white rounded px-[7px] py-[5px] absolute top-[50%] translate-y-[-50%] right-[25px] hover:scale-105 transition-all ease-linear duration-200ms hover:border-red-600 hover:text-red-600"
     >
