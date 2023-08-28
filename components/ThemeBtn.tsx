@@ -28,7 +28,7 @@ export const ThemeBtn = () => {
     <button
       onClick={theme === "light" ? handleDarkMode : handleLightMode}
       type="button"
-      className="text-white  px-[7px] py-[5px] ml-auto hover:scale-105 transition-all ease-linear duration-200ms hover:border-red-600 hover:text-red-600 text-2xl"
+      className="text-white  px-[7px] py-[5px]  hover:scale-110 transition-all ease-linear duration-200ms hover:border-red-600 hover:text-red-600 text-2xl"
     >
       {theme === "light" ? (
         <FaSun color="yellow" />

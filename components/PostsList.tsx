@@ -10,7 +10,7 @@ export const PostsList = ({ posts }: Props) => {
       <p className="my-2 text-lg text-gray-900 dark:text-gray-100 transitionAll">
         Total posts: {posts.length}
       </p>
-      <ul className="flex flex-col gap-[12px] pb-[30px] list-decimal text-gray-900 dark:text-gray-100  pl-2 transtiionAll">
+      <ul className="flex flex-col gap-[12px] pb-[30px] list-decimal text-gray-900 dark:text-gray-100  pl-5 transtiionAll">
         {posts.map((post: any) => (
           <li key={post.id}>
             <Link

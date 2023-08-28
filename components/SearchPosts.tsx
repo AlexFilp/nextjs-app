@@ -20,10 +20,10 @@ export const SearchPosts = ({ onSearch }: Props) => {
   return (
     <form
       onSubmit={onSubmit}
-      className="mt-[20px] flex justify-center align-middle gap-2"
+      className="mt-[20px] flex justify-start align-middle gap-2"
     >
       <input
-        className="py-[5px] px-[12px] w-full  outline-none border-2 border-black rounded-md focus-within:border-red-600"
+        className="py-[5px] px-[12px] w-full  outline-none border border-black rounded-md focus-within:border-red-600 min-[768px]:w-[400px]"
         type="text"
         placeholder="search"
         value={search}

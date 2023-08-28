@@ -4,7 +4,7 @@
 
 @layer components {
   .container {
-    @apply max-w-[375px] px-[1rem] mx-auto;
+    @apply max-w-full px-[1rem] mx-auto min-[375px]:max-w-[375px] min-[768px]:max-w-[768px] min-[1280px]:max-w-[1280px];
   }
   .title {
     @apply mt-3 text-4xl font-bold dark:text-gray-100 transitionAll;
