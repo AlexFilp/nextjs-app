@@ -7,14 +7,18 @@ type Props = {
 export const PostsList = ({ posts }: Props) => {
   return (
     <>
-      <p className="my-2 text-lg">Total posts: {posts.length}</p>
-      <ul className="flex flex-col gap-[12px] pb-[30px]">
+      <p className="my-2 text-lg text-gray-900 dark:text-gray-100 transitionAll">
+        Total posts: {posts.length}
+      </p>
+      <ul className="flex flex-col gap-[12px] pb-[30px] list-decimal text-gray-900 dark:text-gray-100  pl-2 transtiionAll">
         {posts.map((post: any) => (
-          <li
-            key={post.id}
-            className="border-2 border-black rounded-md py-1 px-2 hover:border-red-600 dark:border-white dark:text-white dark:hover:border-red-600 transitionAll"
-          >
-            <Link href={`/blog/${post.id}`}>{post.title}</Link>
+          <li key={post.id}>
+            <Link
+              href={`/blog/${post.id}`}
+              className="text-gray-900 dark:text-gray-100"
+            >
+              {post.title}
+            </Link>
           </li>
         ))}
       </ul>

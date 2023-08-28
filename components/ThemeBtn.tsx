@@ -1,6 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
+import { BsFillMoonFill } from "react-icons/bs";
+import { FaSun } from "react-icons/fa";
 
 export const ThemeBtn = () => {
   const { theme, setTheme } = useTheme();
@@ -26,9 +28,13 @@ export const ThemeBtn = () => {
     <button
       onClick={theme === "light" ? handleDarkMode : handleLightMode}
       type="button"
-      className="text-white border border-white rounded px-[7px] py-[5px] absolute top-[50%] translate-y-[-50%] right-[25px] hover:scale-105 transition-all ease-linear duration-200ms hover:border-red-600 hover:text-red-600"
+      className="text-white  px-[7px] py-[5px] ml-auto hover:scale-105 transition-all ease-linear duration-200ms hover:border-red-600 hover:text-red-600 text-2xl"
     >
-      Switch theme
+      {theme === "light" ? (
+        <FaSun color="yellow" />
+      ) : (
+        <BsFillMoonFill color="#c6e2ff" />
+      )}
     </button>
   );
 };
