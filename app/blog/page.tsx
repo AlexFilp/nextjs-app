@@ -24,7 +24,11 @@ export default function Blog() {
     <>
       <h1 className="title">Blog Page</h1>
       <SearchPosts onSearch={setPosts} />
-      {loading ? <ThreeDots color="red" /> : <PostsList posts={posts} />}
+      {loading ? (
+        <ThreeDots color="rgb(220 38 38)" />
+      ) : (
+        <PostsList posts={posts} />
+      )}
     </>
   );
 }

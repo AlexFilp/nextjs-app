@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="flex flex-col h-screen bg-gray-100 dark:bg-gray-900 transitionAll">
+      <body className="flex flex-col h-screen bg-gray-100 dark:bg-gray-900 transition">
         <Providers>
           <Header />
           <main className="container grow">{children}</main>

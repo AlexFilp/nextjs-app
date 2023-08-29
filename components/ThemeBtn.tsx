@@ -28,12 +28,14 @@ export const ThemeBtn = () => {
     <button
       onClick={theme === "light" ? handleDarkMode : handleLightMode}
       type="button"
-      className="text-white  px-[7px] py-[5px]  hover:scale-110 transition-all ease-linear duration-200ms hover:border-red-600 hover:text-red-600 text-2xl"
+      className={`themeBtn ${
+        theme === "light" ? "focus:ring-yellow-300" : "focus:ring-blue-200"
+      }`}
     >
       {theme === "light" ? (
-        <FaSun color="yellow" />
+        <FaSun color="rgb(253 224 71)" />
       ) : (
-        <BsFillMoonFill color="#c6e2ff" />
+        <BsFillMoonFill color="rgb(191 219 254)" />
       )}
     </button>
   );

@@ -9,7 +9,7 @@ const navItems = [
 
 export default function Header() {
   return (
-    <header className=" bg-gray-900  border-b-2 border-gray-900 dark:border-white transitionAll">
+    <header className=" bg-gray-900  border-b-2 border-gray-900 dark:border-white transition">
       <div className="container">
         <div className="py-5 relative flex justify-center align-center gap-3">
           <div className="mr-auto flex justify-center align-middle gap-3 min-[768px]:mx-auto">

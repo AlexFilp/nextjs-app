@@ -23,16 +23,13 @@ export const SearchPosts = ({ onSearch }: Props) => {
       className="mt-[20px] flex justify-start align-middle gap-2"
     >
       <input
-        className="py-[5px] px-[12px] w-full  outline-none border border-black rounded-md focus-within:border-red-600 min-[768px]:w-[400px]"
+        className="py-[5px] px-[12px] w-full  outline-none border border-black rounded-md focus-within:border-red-600 tablet:w-[400px] placeholder:text-gray-900 transition"
         type="text"
         placeholder="search"
         value={search}
         onChange={onChange}
       />
-      <button
-        type="submit"
-        className="border border-black rounded-md py-1 px-2 hover:border-red-600 hover:text-red-600 focus:border-red-600 focus:text-red-600 transitionAll dark:border-white dark:text-white dark:hover:border-red-600 dark:hover:text-red-600 dark:focus:border-red-600 dark:focus:text-red-600"
-      >
+      <button type="submit" className="searchBtn">
         Search
       </button>
     </form>

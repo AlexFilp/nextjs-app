@@ -5,5 +5,5 @@ export const metadata: Metadata = {
 };
 
 export default function About() {
-  return <p className="text-lg dark:text-white transitionAll">select please</p>;
+  return <p className="text-lg dark:text-gray-100 transition">select please</p>;
 }
