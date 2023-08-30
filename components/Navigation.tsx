@@ -1,6 +1,5 @@
-"use client";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { LinkList } from "./LinksList";
+import { SideBar } from "./SideBar";
 
 type NavLink = {
   label: string;
@@ -12,21 +11,10 @@ type Props = {
 };
 
 export const Navigation = ({ navLinks }: Props) => {
-  const pathName = usePathname();
   return (
     <>
-      {navLinks.map((link) => {
-        const isActive = pathName === link.href;
-        return (
-          <Link
-            className={`link ${isActive ? "activeLink" : ""}`}
-            key={link.label}
-            href={link.href}
-          >
-            {link.label}
-          </Link>
-        );
-      })}
+      <LinkList navLinks={navLinks} />
+      <SideBar navLinks={navLinks} />
     </>
   );
 };

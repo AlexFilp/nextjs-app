@@ -11,10 +11,8 @@ export default function Header() {
   return (
     <header className=" bg-gray-900 border-b-2 border-gray-900 dark:border-white transition">
       <div className="container">
-        <div className="py-5 relative flex justify-center align-center gap-3">
-          <div className="mr-auto flex justify-center align-middle gap-3 tablet:gap-7 min-[768px]:mx-auto">
-            <Navigation navLinks={navItems} />
-          </div>
+        <div className="py-5 flex justify-start tablet:justify-center  items-center gap-3">
+          <Navigation navLinks={navItems} />
           <ThemeBtn />
         </div>
       </div>

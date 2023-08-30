@@ -4,7 +4,7 @@ import { useTheme } from "next-themes";
 import { BsFillMoonFill } from "react-icons/bs";
 import { FaSun } from "react-icons/fa";
 
-export const ThemeBtn = () => {
+export const SideBarThemeBtn = () => {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -28,14 +28,14 @@ export const ThemeBtn = () => {
     <button
       onClick={theme === "light" ? handleDarkMode : handleLightMode}
       type="button"
-      className={`themeBtn  hidden tablet:block ${
+      className={`absolute top-5 right-4 themeBtn ${
         theme === "light" ? "focus:ring-yellow-300" : "focus:ring-blue-200"
       }`}
     >
       {theme === "light" ? (
-        <FaSun color="rgb(253 224 71)" />
+        <FaSun className="text-yellow-400 " />
       ) : (
-        <BsFillMoonFill color="rgb(191 219 254)" />
+        <BsFillMoonFill className="text-blue-300 text-[22px]" />
       )}
     </button>
   );
