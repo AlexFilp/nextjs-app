@@ -1,6 +1,5 @@
 import { authOptions } from "@/configs/auth";
 import { getServerSession } from "next-auth/next";
-import Image from "next/image";
 
 export default async function Profile() {
   const session = await getServerSession(authOptions);

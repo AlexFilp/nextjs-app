@@ -12,7 +12,7 @@ export const LinkList = ({ navLinks }: Props) => {
   const session = useSession();
 
   return (
-    <ul className="mr-auto hidden tablet:flex justify-center align-middle gap-3 tablet:gap-7 min-[768px]:mx-auto ">
+    <ul className=" hidden tablet:flex justify-center items-center gap-7 ">
       {navLinks.map((link) => {
         const isActive = pathName === link.href;
         return (
@@ -26,24 +26,6 @@ export const LinkList = ({ navLinks }: Props) => {
           </li>
         );
       })}
-      {session?.data && (
-        <Link className="link" href={"/profile"}>
-          Profile
-        </Link>
-      )}
-      {session?.data ? (
-        <Link
-          className="link"
-          href={"#"}
-          onClick={() => signOut({ callbackUrl: "/" })}
-        >
-          Sign Out
-        </Link>
-      ) : (
-        <Link className="link" href={"/api/auth/signin"}>
-          Sign In
-        </Link>
-      )}
     </ul>
   );
 };

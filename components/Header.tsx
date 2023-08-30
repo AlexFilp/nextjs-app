@@ -1,5 +1,8 @@
 import { Navigation } from "./Navigation";
-import { ThemeBtn } from "./ThemeBtn";
+import { ThemeBtn } from "./themeButtons/ThemeBtn";
+import { UserWrapp } from "./UserWrapp";
+import { authOptions } from "@/configs/auth";
+import { getServerSession } from "next-auth/next";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -7,13 +10,15 @@ const navItems = [
   { label: "Blog", href: "/blog" },
 ];
 
-export default function Header() {
+export default async function Header() {
+  const session = await getServerSession(authOptions);
   return (
-    <header className=" bg-gray-900 border-b-2 border-gray-900 dark:border-white transition">
+    <header className="relative bg-gray-900 border-b-2 border-gray-900 dark:border-white transition">
       <div className="container">
         <div className="py-5 flex justify-start tablet:justify-center  items-center gap-3">
           <Navigation navLinks={navItems} />
-          <ThemeBtn />
+          {/* <ThemeBtn /> */}
+          <UserWrapp session={session} />
         </div>
       </div>
     </header>
