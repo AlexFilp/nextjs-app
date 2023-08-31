@@ -16,7 +16,6 @@ export const UserWrapp = ({ session }: Props) => {
   const ref = useRef(null);
 
   const toggleIsOpen = (event: any) => {
-    console.log(event.target);
     if (event.currentTarget === event.target) {
       setIsOpen(!isOpen);
     }
@@ -36,7 +35,11 @@ export const UserWrapp = ({ session }: Props) => {
         >
           <div className="rounded-md w-9 overflow-hidden pointer-events-none">
             {session?.user?.image && (
-              <img src={session.user.image} alt="avatar" />
+              <img
+                src={session.user.image}
+                alt="avatar"
+                className="select-none"
+              />
             )}
           </div>
           {isOpen ? (
@@ -45,12 +48,12 @@ export const UserWrapp = ({ session }: Props) => {
             </div>
           ) : (
             <div className="group-hover:bg-gray-400 group-hover:bg-opacity-50 transition rounded-lg pointer-events-none">
-              <MdOutlineKeyboardArrowDown className="text-gray-100 text-[20px] pointer-events-none" />
+              <MdOutlineKeyboardArrowDown className="text-gray-100 text-[20px] pointer-events-none " />
             </div>
           )}
 
           {isOpen && (
-            <ul className="absolute bottom-0 translate-y-full right-0 border-l-2 border-r-2 border-b-2 rounded border-red-600 w-28 bg-gray-100 dark:bg-gray-900">
+            <ul className="absolute bottom-0 translate-y-full right-0 border-l-2 border-r-2 border-b-2 rounded border-red-600 w-28 bg-gray-100 dark:bg-gray-900 select-none">
               <Link href="/profile">
                 <li className="p-1 border-b border-gray-400 text-gray-900 dark:text-gray-100 text-end hover:bg-gray-300 dark:hover:bg-gray-700">
                   Profile
