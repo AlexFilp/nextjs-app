@@ -3,6 +3,8 @@ import { SignInSchema } from "@/services/yupSchemas";
 import { Formik, FormikHelpers, Form, Field, ErrorMessage } from "formik";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { AiFillEye } from "react-icons/ai";
+import { AiFillEyeInvisible } from "react-icons/ai";
 
 interface LoginValues {
   email: string;
@@ -41,7 +43,10 @@ export const SignInForm = () => {
         validationSchema={SignInSchema}
         onSubmit={handleSubmit}
       >
-        <Form className="flex flex-col gap-5 w-96" autoComplete="on">
+        <Form
+          className="flex flex-col gap-5 w-full tablet:w-96"
+          autoComplete="on"
+        >
           <label className="label">
             <span className="ml-1">Email</span>
             <Field type="email" name="email" className="input" />

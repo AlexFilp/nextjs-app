@@ -39,13 +39,13 @@ export const SideBar = ({ navLinks }: Props) => {
       <div
         className={`${
           !sideBarOpen ? "opacity-0 pointer-events-none" : "opacity-1"
-        } fixed top-0 left-0 w-full h-full bg-gray-500 bg-opacity-25 transition`}
+        } fixed top-0 left-0 w-full h-full bg-gray-500 bg-opacity-25 transition z-40`}
       >
         <div
           ref={sidebarRef}
           className={`flex justify-center items-center pt-20 pb-10 absolute top-0 left-0 ${
             !sideBarOpen ? "-translate-x-full" : "translate-x-0"
-          } bg-gray-100 dark:bg-gray-900 w-40 border-b-2 border-r-2 border-red-600 transition`}
+          } bg-gray-100 dark:bg-gray-900 w-40 border-b-2 border-r-2 border-red-600 transition z-40`}
         >
           <ul className="flex flex-col justify-center items-center gap-6 w-full ">
             {navLinks.map((link) => {
