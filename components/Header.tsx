@@ -1,5 +1,4 @@
 import { Navigation } from "./Navigation";
-import { ThemeBtn } from "./themeButtons/ThemeBtn";
 import { UserWrapp } from "./UserWrapp";
 import { authOptions } from "@/configs/auth";
 import { getServerSession } from "next-auth/next";
@@ -17,7 +16,6 @@ export default async function Header() {
       <div className="container">
         <div className="py-5 flex justify-start tablet:justify-center  items-center gap-3">
           <Navigation navLinks={navItems} />
-          {/* <ThemeBtn /> */}
           <UserWrapp session={session} />
         </div>
       </div>

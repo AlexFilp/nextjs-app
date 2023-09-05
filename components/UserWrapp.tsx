@@ -1,8 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import { useState, useRef } from "react";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
-import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import { FaUserAlt } from "react-icons/fa";
 import { MdKeyboardArrowUp } from "react-icons/md";
 import { UserThemeBtn } from "./themeButtons/UserThemeBtn";
 import { useOnClickOutside } from "usehooks-ts";
@@ -34,45 +35,49 @@ export const UserWrapp = ({ session }: Props) => {
           className="absolute top-2/4 -translate-y-2/4 right-2 tablet:right-4 flex justify-center items-center gap-1 cursor-pointer group"
         >
           <div className="rounded-md w-9 overflow-hidden pointer-events-none">
-            {session?.user?.image && (
+            {session?.user?.image ? (
               <img
                 src={session.user.image}
                 alt="avatar"
                 className="select-none"
               />
+            ) : (
+              <FaUserAlt className="w-8 h-8 text-white" />
             )}
           </div>
-          {isOpen ? (
-            <div className="group-hover:bg-gray-400 group-hover:bg-opacity-50 transition rounded-lg pointer-events-none">
-              <MdKeyboardArrowUp className="text-gray-100 text-[20px] pointer-events-none" />
-            </div>
-          ) : (
-            <div className="group-hover:bg-gray-400 group-hover:bg-opacity-50 transition rounded-lg pointer-events-none">
-              <MdOutlineKeyboardArrowDown className="text-gray-100 text-[20px] pointer-events-none " />
-            </div>
-          )}
+          <div className="group-hover:bg-gray-400 group-hover:bg-opacity-50 transition rounded-lg pointer-events-none">
+            <MdKeyboardArrowUp
+              className={`text-gray-100 text-[20px] pointer-events-none ${
+                isOpen ? "rotate-180" : "rotate-0"
+              } transition`}
+            />
+          </div>
 
-          {isOpen && (
-            <ul className="absolute bottom-0 translate-y-full right-0 border-l-2 border-r-2 border-b-2 rounded border-red-600 w-28 bg-gray-100 dark:bg-gray-900 select-none">
-              <Link href="/profile">
-                <li className="p-1 border-b border-gray-400 text-gray-900 dark:text-gray-100 text-end hover:bg-gray-300 dark:hover:bg-gray-700">
-                  Profile
-                </li>
+          <ul
+            className={`absolute bottom-0 translate-y-full right-0 border-l-2 border-r-2 border-b-2 rounded border-red-600 w-28 bg-gray-100 dark:bg-gray-900 select-none ${
+              isOpen
+                ? "opacity-100 translate-y-full"
+                : "opacity-0 pointer-events-none translate-y-[90%]"
+            } transition -z-10`}
+          >
+            <Link href="/profile">
+              <li className="p-1 border-b border-gray-400 text-gray-900 dark:text-gray-100 text-end hover:bg-gray-300 dark:hover:bg-gray-700">
+                Profile
+              </li>
+            </Link>
+            <li className="p-1 border-b border-gray-400 hover:bg-gray-300 dark:hover:bg-gray-700">
+              <UserThemeBtn />
+            </li>
+            <li className="p-1 text-end text-gray-900 dark:text-gray-100 hover:bg-gray-300 dark:hover:bg-gray-700">
+              <Link href="#" onClick={() => signOut({ callbackUrl: "/" })}>
+                Sign Out
               </Link>
-              <li className="p-1 border-b border-gray-400 hover:bg-gray-300 dark:hover:bg-gray-700">
-                <UserThemeBtn />
-              </li>
-              <li className="p-1 text-end text-gray-900 dark:text-gray-100 hover:bg-gray-300 dark:hover:bg-gray-700">
-                <Link href="#" onClick={() => signOut({ callbackUrl: "/" })}>
-                  Sign Out
-                </Link>
-              </li>
-            </ul>
-          )}
+            </li>
+          </ul>
         </div>
       ) : (
         <ul className="hidden absolute top-2/4 -translate-y-2/4 right-5 tablet:flex justify-center items-center gap-7">
-          <Link href={"/api/auth/signin"} className="link ">
+          <Link href={"/signin"} className="link ">
             <li>Sign In</li>
           </Link>
           <Link href={"#"} className="link ">
