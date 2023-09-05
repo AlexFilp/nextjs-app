@@ -67,7 +67,7 @@ export const SideBar = ({ navLinks }: Props) => {
               <Link
                 onClick={toggleSideBar}
                 className="sideBarLink w-full"
-                href={"/api/auth/signin"}
+                href={"/signin"}
               >
                 <li className="text-center"> Sign In</li>
               </Link>
@@ -82,7 +82,7 @@ export const SideBar = ({ navLinks }: Props) => {
               </Link>
             )}
           </ul>
-          <SideBarThemeBtn />
+          {!session?.data && <SideBarThemeBtn />}
           <button
             type="button"
             onClick={toggleSideBar}

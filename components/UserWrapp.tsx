@@ -2,17 +2,18 @@
 "use client";
 import { useState, useRef } from "react";
 import Link from "next/link";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { FaUserAlt } from "react-icons/fa";
 import { MdKeyboardArrowUp } from "react-icons/md";
 import { UserThemeBtn } from "./themeButtons/UserThemeBtn";
 import { useOnClickOutside } from "usehooks-ts";
 
 type Props = {
-  session: any;
+  serverSession: any;
 };
 
-export const UserWrapp = ({ session }: Props) => {
+export const UserWrapp = ({ serverSession }: Props) => {
+  const session = useSession();
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef(null);
 
@@ -28,16 +29,16 @@ export const UserWrapp = ({ session }: Props) => {
 
   return (
     <>
-      {session ? (
+      {session?.data ? (
         <div
           ref={ref}
           onClick={toggleIsOpen}
           className="absolute top-2/4 -translate-y-2/4 right-2 tablet:right-4 flex justify-center items-center gap-1 cursor-pointer group"
         >
           <div className="rounded-md w-9 overflow-hidden pointer-events-none">
-            {session?.user?.image ? (
+            {serverSession?.user?.image ? (
               <img
-                src={session.user.image}
+                src={serverSession.user.image}
                 alt="avatar"
                 className="select-none"
               />
@@ -48,16 +49,15 @@ export const UserWrapp = ({ session }: Props) => {
           <div className="group-hover:bg-gray-400 group-hover:bg-opacity-50 transition rounded-lg pointer-events-none">
             <MdKeyboardArrowUp
               className={`text-gray-100 text-[20px] pointer-events-none ${
-                isOpen ? "rotate-180" : "rotate-0"
+                isOpen ? "rotate-0" : "rotate-180"
               } transition`}
             />
           </div>
-
           <ul
-            className={`absolute bottom-0 translate-y-full right-0 border-l-2 border-r-2 border-b-2 rounded border-red-600 w-28 bg-gray-100 dark:bg-gray-900 select-none ${
+            className={`absolute bottom-0 right-0 border-l-2 border-r-2 border-b-2 rounded border-red-600 w-28 bg-gray-100 dark:bg-gray-900 select-none ${
               isOpen
-                ? "opacity-100 translate-y-full"
-                : "opacity-0 pointer-events-none translate-y-[90%]"
+                ? "opacity-100 translate-y-[105%]"
+                : "opacity-0 pointer-events-none translate-y-[95%]"
             } transition -z-10`}
           >
             <Link href="/profile">

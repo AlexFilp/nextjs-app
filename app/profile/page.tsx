@@ -5,6 +5,7 @@ import { FaUserAlt } from "react-icons/fa";
 
 export default async function Profile() {
   const session = await getServerSession(authOptions);
+
   return (
     <div className="pt-10 flex flex-col items-center justify-center gap-6">
       {session?.user?.image ? (
@@ -14,7 +15,7 @@ export default async function Profile() {
           alt="avatar"
         />
       ) : (
-        <FaUserAlt className="w-32 h-32" />
+        <FaUserAlt className="w-32 h-32 text-gray-900 dark:text-gray-100 transition" />
       )}
 
       <h1 className="title text-center">Hi, {session?.user?.name}!</h1>
