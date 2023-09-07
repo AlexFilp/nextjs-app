@@ -1,65 +1,74 @@
 "use client";
-import { SignInSchema } from "@/services/yupSchemas";
+import { SignUpSchema } from "@/services/yupSchemas";
 import { Formik, FormikHelpers, Form, Field, ErrorMessage } from "formik";
-import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { AiFillEye } from "react-icons/ai";
 import { AiFillEyeInvisible } from "react-icons/ai";
 
-interface LoginValues {
+interface RegisterValues {
+  name: string;
   email: string;
   password: string;
+  repeatPassword: string;
 }
 
-export const SignInForm = () => {
+export const SignUpForm = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const router = useRouter();
+  const [repeatPasswordVisible, setRepeatPasswordVisible] = useState(false);
 
   const handlePasswordVisible = () => {
     setPasswordVisible(!passwordVisible);
   };
+  const handleRepeatPasswordVisible = () => {
+    setRepeatPasswordVisible(!repeatPasswordVisible);
+  };
 
   const initialValues = {
+    name: "",
     email: "",
     password: "",
+    repeatPassword: "",
   };
 
   const handleSubmit = async (
-    values: LoginValues,
-    actions: FormikHelpers<LoginValues>
+    values: RegisterValues,
+    actions: FormikHelpers<RegisterValues>
   ) => {
-    const response = await signIn("credentials", {
-      email: values.email,
-      password: values.password,
-      redirect: false,
-    });
-
-    if (response && !response.error) {
-      router.push("/profile");
-      actions.resetForm();
-    } else {
-      alert("Invalid Email or Password");
-    }
+    const { repeatPassword, ...restValues } = values;
+    alert(JSON.stringify(restValues, null, 2));
+    actions.resetForm();
   };
   return (
     <>
       <Formik
         initialValues={initialValues}
-        validationSchema={SignInSchema}
+        validationSchema={SignUpSchema}
         onSubmit={handleSubmit}
       >
         {({ errors, touched }) => {
-          const isValid = (field: keyof LoginValues) =>
+          const isValid = (field: keyof RegisterValues) =>
             touched[field] && errors[field] ? false : true;
+          const nameValid = isValid("name");
           const emailValid = isValid("email");
           const passwordValid = isValid("password");
+          const repeatPasswordValid = isValid("repeatPassword");
 
           return (
             <Form
               className="flex flex-col gap-5 w-full tablet:w-96"
               autoComplete="on"
             >
+              <label className="label">
+                <span className="ml-1">Name</span>
+                <Field
+                  type="text"
+                  name="name"
+                  className={`input ${!nameValid && "border-red-600"}`}
+                />
+                <p className="errorMessage">
+                  <ErrorMessage name="name" />
+                </p>
+              </label>
               <label className="label">
                 <span className="ml-1">Email</span>
                 <Field
@@ -94,8 +103,35 @@ export const SignInForm = () => {
                   <ErrorMessage name="password" />
                 </p>
               </label>
+              <label className="label">
+                <span className="ml-1">Repeat password</span>
+                <div className="relative">
+                  <Field
+                    type={repeatPasswordVisible ? "text" : "password"}
+                    name="repeatPassword"
+                    autoComplete="off"
+                    className={`input pr-10 ${
+                      !repeatPasswordValid && "border-red-600"
+                    }`}
+                  />
+                  <button
+                    onClick={handleRepeatPasswordVisible}
+                    type="button"
+                    className="passwordBtn"
+                  >
+                    {!repeatPasswordVisible ? (
+                      <AiFillEye />
+                    ) : (
+                      <AiFillEyeInvisible />
+                    )}
+                  </button>
+                </div>
+                <p className="absolute max-[339px]:-bottom-7 right-1 min-[340px]:top-0 text-red-600 text-[15px]">
+                  <ErrorMessage name="repeatPassword" />
+                </p>
+              </label>
               <button type="submit" className="submitBtn">
-                Sign In
+                Sign Up
               </button>
             </Form>
           );

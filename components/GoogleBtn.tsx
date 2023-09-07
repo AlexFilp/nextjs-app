@@ -3,7 +3,11 @@ import { signIn } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
 import { FcGoogle } from "react-icons/fc";
 
-export const GoogleBtn = () => {
+type Props = {
+  text: string;
+};
+
+export const GoogleBtn = ({ text }: Props) => {
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get("callbackUrl") || "/profile";
   return (
@@ -12,7 +16,7 @@ export const GoogleBtn = () => {
       onClick={() => signIn("google", { callbackUrl })}
     >
       <FcGoogle className="text-[23px] group-hover:scale-125 group-focus:scale-125  transition" />
-      Sign in with Google
+      {text} with Google
     </button>
   );
 };

@@ -80,7 +80,7 @@ export const UserWrapp = ({ serverSession }: Props) => {
           <Link href={"/signin"} className="link ">
             <li>Sign In</li>
           </Link>
-          <Link href={"#"} className="link ">
+          <Link href={"/signup"} className="link ">
             <li>Sign Up</li>
           </Link>
         </ul>
